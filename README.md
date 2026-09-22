@@ -1,5 +1,18 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Project Structure
+
+```
+app/
+├── page.tsx          # Home page
+├── about/
+│   └── page.tsx      # About me page
+├── contact/
+│   └── page.tsx      # Contact page
+├── layout.tsx        # Root layout
+└── globals.css       # Global styles
+```
+
 ## Getting Started
 
 First, run the development server:
