@@ -1,11 +1,11 @@
 {
-  "nav": {
-    "label": "Principal",
-    "home": "Inicio",
-    "about": "Acerca de",
-    "contact": "Contacto"
-  },
-  "home": {
-    "title": "Bienvenido a mi portafolio"
-  }
+	"nav": {
+		"label": "Principal",
+		"home": "Inicio",
+		"about": "Acerca de",
+		"contact": "Contacto"
+	},
+	"home": {
+		"title": "Bienvenido a mi portafolio"
+	}
 }

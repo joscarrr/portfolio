@@ -1,11 +1,11 @@
 {
-  "nav": {
-    "label": "Main",
-    "home": "Home",
-    "about": "About",
-    "contact": "Contact"
-  },
-  "home": {
-    "title": "Welcome to my portfolio"
-  }
+	"nav": {
+		"label": "Main",
+		"home": "Home",
+		"about": "About",
+		"contact": "Contact"
+	},
+	"home": {
+		"title": "Welcome to my portfolio"
+	}
 }
