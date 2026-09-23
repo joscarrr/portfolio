@@ -3,12 +3,17 @@ import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import Navbar from "./_components/navbar";
-import { Lexend } from "next/font/google";
+import { Lexend, JetBrains_Mono } from "next/font/google";
 import { routing } from "@/i18n/routing";
 import "../globals.css";
 
-const lexend = Lexend({
+const LEXEND = Lexend({
   variable: "--font-lexend",
+  subsets: ["latin"],
+});
+
+const JETBRAINS_MONO = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
   subsets: ["latin"],
 });
 
@@ -34,8 +39,8 @@ export default async function RootLayout({
   setRequestLocale(locale);
 
   return (
-    <html lang={locale} className={`${lexend.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col">
+    <html lang={locale} className={`${LEXEND.variable} ${JETBRAINS_MONO.variable} h-full antialiased`}>
+      <body className="bg-primary min-h-full flex flex-col">
         <NextIntlClientProvider>
           <Navbar />
           {children}
