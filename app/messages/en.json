@@ -1,5 +1,6 @@
 {
   "nav": {
+    "label": "Main",
     "home": "Home",
     "about": "About",
     "contact": "Contact"
