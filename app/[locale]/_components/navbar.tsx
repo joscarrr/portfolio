@@ -72,14 +72,14 @@ export default function Navbar() {
 							initial={{ opacity: 0 }}
 							animate={
 								i === subtitle.length - 1
-									? BLINK_ANIMATION.animate
+									? { opacity: [0, 0, 1, 1] }
 									: { opacity: 1 }
 							}
 							transition={
 								i === subtitle.length - 1
 									? {
 											...BLINK_ANIMATION.transition.opacity,
-											delay: (subtitle.length - 2) * 0.03,
+											delay: (subtitle.length - 1) * 0.03,
 										}
 									: { delay: i * 0.03, duration: 0 }
 							}
