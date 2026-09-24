@@ -1,20 +1,36 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
-import { AnimatePresence, motion } from "motion/react";
-import { useState } from "react";
+import { Link, usePathname } from "@/i18n/navigation";
+import { motion, type MotionProps } from "motion/react";
 
-const tabs = [
+const TABS = [
 	{ name: "home", href: "/" },
 	{ name: "about", href: "/about" },
 	{ name: "contact", href: "/contact" },
 ];
 
+const BLINK_ANIMATION = {
+	animate: { opacity: [0, 0, 1, 1] },
+	transition: {
+		opacity: {
+			duration: 1,
+			times: [0, 0.5, 0.5, 1],
+			ease: "linear",
+			repeat: Infinity,
+		},
+		layout: {
+			type: "spring",
+			stiffness: 400,
+			damping: 30,
+		},
+	},
+} satisfies MotionProps;
+
 export default function Navbar() {
 	const t = useTranslations("nav");
 
-	const [currentTab, setCurrentTab] = useState(tabs[0].name);
+	const pathname = usePathname();
 
 	return (
 		<header className="h-50 w-full items-center justify-between">
@@ -31,34 +47,18 @@ export default function Navbar() {
 				<Link href="https://github.com/joscarrr">joscarrr.dev</Link>
 				<nav aria-label={t("label")}>
 					<ul className="flex gap-6 font-bold">
-						{tabs.map((tab) => (
-							<motion.div layout>
-								<li key={tab.name} className="flex gap-2">
-									<Link href={tab.href} onClick={() => setCurrentTab(tab.name)}>
-										{t(tab.name)}
-									</Link>
-									{currentTab === tab.name && (
-										<motion.div
-											layoutId="nav-indicator"
-											animate={{ opacity: [1, 1, 0, 0] }}
-											transition={{
-												opacity: {
-													duration: 1,
-													times: [0, 0.5, 0.5, 1],
-													ease: "linear",
-													repeat: Infinity,
-												},
-												layout: {
-													type: "spring",
-													stiffness: 400,
-													damping: 30,
-												},
-											}}
-											className="h-[0.5lh] w-2 self-center bg-navbar-secondary"
-										/>
-									)}
-								</li>
-							</motion.div>
+						{TABS.map((tab) => (
+							<motion.li layout key={tab.name} className="flex gap-2">
+								<Link href={tab.href}>{t(tab.name)}</Link>
+								{pathname === tab.href && (
+									<motion.div
+										layoutId="nav-indicator"
+										animate={BLINK_ANIMATION.animate}
+										transition={BLINK_ANIMATION.transition}
+										className="h-[0.5lh] w-2 self-center bg-navbar-secondary"
+									/>
+								)}
+							</motion.li>
 						))}
 					</ul>
 				</nav>
