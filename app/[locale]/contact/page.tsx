@@ -1,3 +1,3 @@
 export default function Contact() {
-  return null;
+	return null;
 }

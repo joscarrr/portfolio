@@ -1,0 +1,6 @@
+{
+	"semi": true,
+	"useTabs": true,
+	"plugins": ["prettier-plugin-tailwindcss"],
+	"tailwindStylesheet": "./app/globals.css"
+}
