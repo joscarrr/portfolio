@@ -23,8 +23,8 @@ export default function Navbar() {
 					{"> made with love and a bit of code >⩊<"}
 				</p>
 				<p className="flex items-center gap-4 text-text-primary">
-					<span>-104</span>
-					<span>+44</span>
+					<span className="text-red-text">-104</span>
+					<span className="text-green-text">+44</span>
 				</p>
 			</div>
 			<div className="flex h-20 w-full items-center justify-between bg-navbar-primary px-12.5 text-medium font-bold text-navbar-secondary">
