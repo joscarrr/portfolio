@@ -31,13 +31,13 @@ export default function Navbar() {
 	const t = useTranslations("nav");
 
 	const pathname = usePathname();
+	const currentTab = TABS.find((tab) => tab.href === pathname) ?? TABS[0];
+	const subtitle = t(`subtitle.${currentTab.name}`);
 
 	return (
 		<header className="h-50 w-full items-center justify-between">
 			<div className="flex h-10 w-full items-center justify-between px-2.5 text-small text-primary">
-				<p className="text-text-primary">
-					{"> made with love and a bit of code >⩊<"}
-				</p>
+				<p className="text-text-primary">{t("tagline")}</p>
 				<p className="flex items-center gap-4 text-text-primary">
 					<span className="text-red-text">-104</span>
 					<span className="text-green-text">+44</span>
@@ -64,7 +64,30 @@ export default function Navbar() {
 				</nav>
 			</div>
 			<div className="flex h-20 w-full items-center justify-between bg-sub-navbar-primary px-12.5 text-medium font-bold text-sub-navbar-secondary">
-				<h2>Recent Activity</h2>
+				<h2 key={subtitle} aria-label={subtitle}>
+					{subtitle.split("").map((char, i) => (
+						<motion.span
+							key={i}
+							aria-hidden
+							initial={{ opacity: 0 }}
+							animate={
+								i === subtitle.length - 1
+									? BLINK_ANIMATION.animate
+									: { opacity: 1 }
+							}
+							transition={
+								i === subtitle.length - 1
+									? {
+											...BLINK_ANIMATION.transition.opacity,
+											delay: (subtitle.length - 2) * 0.03,
+										}
+									: { delay: i * 0.03, duration: 0 }
+							}
+						>
+							{char}
+						</motion.span>
+					))}
+				</h2>
 			</div>
 		</header>
 	);
