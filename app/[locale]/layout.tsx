@@ -7,12 +7,12 @@ import { Lexend, JetBrains_Mono } from "next/font/google";
 import { routing } from "@/i18n/routing";
 import "../globals.css";
 
-const LEXEND = Lexend({
+const lexend = Lexend({
 	variable: "--font-lexend",
 	subsets: ["latin"],
 });
 
-const JETBRAINS_MONO = JetBrains_Mono({
+const jetbrainsMono = JetBrains_Mono({
 	variable: "--font-jetbrains-mono",
 	subsets: ["latin"],
 });
@@ -41,7 +41,7 @@ export default async function RootLayout({
 	return (
 		<html
 			lang={locale}
-			className={`${LEXEND.variable} ${JETBRAINS_MONO.variable} h-full antialiased`}
+			className={`${lexend.variable} ${jetbrainsMono.variable} h-full antialiased`}
 		>
 			<body className="flex min-h-full flex-col bg-primary">
 				<NextIntlClientProvider>
