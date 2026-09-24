@@ -11,7 +11,7 @@ const TABS = [
 ];
 
 const BLINK_ANIMATION = {
-	animate: { opacity: [0, 0, 1, 1] },
+	animate: { opacity: [1, 1, 0, 0] },
 	transition: {
 		opacity: {
 			duration: 1,
